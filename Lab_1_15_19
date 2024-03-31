@@ -1,0 +1,65 @@
+#--*-- encoding: cp1251 --*--
+import random
+from unittest import skip
+from unittest.util import sorted_list_difference
+
+rand_list=[]
+n=10
+for i in range(n):
+    rand_list.append(random.randint(1,10))
+#15
+sorted_list = sorted(rand_list)
+#print('#15: ' + str(rand_list.index(sorted_list[0])) + ', ' + str(rand_list.index(sorted_list[1])))
+
+
+#16
+skip_num = []
+for i in range(n-1):
+    for j in range(sorted_list[i]+1, sorted_list[i+1]):
+        skip_num.append(j)
+#print('#16: '+ str(sorted_list) + '\n' + str(skip_num))
+
+
+#17
+k = 0
+for i in range(n-2):
+    if (rand_list[i] < rand_list[i+1]) and rand_list[i+1] > rand_list[i+2]:
+        k+=1
+#print(k)
+
+
+#18
+list_mix = [1, 5.3, 3, 6.6, 23]
+flag = 1
+for i in range(len(list_mix)-1):
+    if ((list_mix[i]%1 == 0) and (list_mix[i+1]%1 != 0)) or ((list_mix[i]%1 != 0) and (list_mix[i+1]%1 == 0)):
+        pass
+    else: flag = 0
+#if flag == 1:
+#    print('Элементы чередуются ')
+#else: 
+#    print('Не чередуются')
+
+
+#19
+def isSimple(x):
+    flag = 1
+    for i in range(2, x):
+        if x%i == 0: flag = 0
+    return flag
+k = 0
+sum = 0
+print(rand_list)
+for i in range(n):
+    if isSimple(rand_list[i]) == 1:
+        k+=1
+        sum+=rand_list[i]
+mean_simp = sum/k
+sum = 0
+k = 0
+print(mean_simp)
+for i in range(n):
+    if (isSimple(rand_list[i]) != 1) and (rand_list[i] > mean_simp):
+                                          sum+=rand_list[i]
+                                          k+=1
+print(sum/k)
