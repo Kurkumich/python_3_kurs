@@ -1,0 +1,35 @@
+#--*-- encoding: cp1251 --*--
+import math
+
+def average_ascii_weight(s):
+    total_weight = sum(ord(char) for char in s)
+    return total_weight / len(s)
+
+def sort_by_avg_weight(s):
+    sorted_strings = sorted(strings, key=average_ascii_weight)
+    print("Отсортированный список строк по среднему весу ASCII-кода символов:")
+    for string in sorted_strings:
+        print(string)
+
+def deviation_from_first_string(s):
+    avg_weight = average_ascii_weight(s)
+    return math.sqrt((avg_weight - first_string_avg_weight)**2)
+
+n = int(input("Введите количество строк: "))
+strings = []
+for i in range(n):
+    string = input("Введите строку: ")
+    strings.append(string)
+
+first_string_avg_weight = average_ascii_weight(strings[0])
+sorted_strings = sorted(strings, key=deviation_from_first_string)
+
+#2
+sort_by_avg_weight(strings)
+#4
+print("Отсортированный список строк по квадратичному отклонению от первой строки:")
+for string in sorted_strings:
+    print(string)
+
+
+
