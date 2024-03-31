@@ -1,0 +1,27 @@
+#--*-- encoding: cp1251 --*--
+from os import path
+string1 = input('Введите строку: ')
+def down_to_up(s):
+    string2 = s
+    if list(string2) == sorted(string2):
+        print('Символы в строке расположены в порядке возрастания')
+    else:
+        print('Символы в строке расположены не в порядке возрастания')
+def count_of_A(s):
+    str1 = list(s)
+    k=0
+    for i in range(len(str1)):
+        if str1[i] == 'A': k+=1
+    print('Количество букв "A": ' + str(k))
+def path_of_file(s):
+    file_name = path.basename(s)
+    print(file_name.split('.')[0])
+print('Что сделать со строкой?\n1-Проверить, упорядочены ли строчные символы этой строки по возрастанию.\n2-Подсчитать количество букв "А" в этой строке?\n3-Найти имя файла без расширения')
+m = int(input())
+if m == 1:
+    down_to_up(string1)
+elif m == 2:
+    count_of_A(string1)
+elif m == 3:
+    path_of_file(string1)
+else: print("Выберите 1-3")
