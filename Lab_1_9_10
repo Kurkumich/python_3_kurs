@@ -1,0 +1,21 @@
+#--*-- encoding: cp1251 --*--
+
+def count_words_in_string(s):
+    return len(s.split())
+
+
+n = int(input("Введите количество строк: "))
+strings = []
+for i in range(n):
+    string = input("Введите строку: ")
+    strings.append(string)
+
+sorted_strings = sorted(strings, key=len)
+print("Отсортированный список строк по длине:")
+for string in sorted_strings:
+    print(string)
+
+sorted_strings = sorted(strings, key=count_words_in_string)
+print("Отсортированный список строк по количеству слов:")
+for string in sorted_strings:
+    print(string)
