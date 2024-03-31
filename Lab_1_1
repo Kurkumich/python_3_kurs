@@ -1,0 +1,54 @@
+#--*-- encoding: cp1251 --*--
+number = int(input('Введите число: '))
+def co_prime(n):
+    co_prime_count = n
+    dividers = []
+    i = 2
+    while i<=n:
+        if n%i:
+            i+=1
+        else:
+            n = n//i
+            dividers.append(i)
+    dividers = list(set(dividers))
+    for i in range(0,len(dividers)):
+        co_prime_count *= (1-1/dividers[i])
+    print(int(co_prime_count))
+    return None
+def num_divided_by_3(n):
+    num = n
+    div = []
+    while num!=0:
+        if num%10%3 == 0:
+            div.append(num%10)
+        num = num//10
+    div = list(reversed(div))
+    print(sum(div))
+    return None
+def divided_and_co_prime(n):
+    num1 = n
+    sum_ = 0
+    while num1:
+        sum_ += num1%10
+        num1 = num1//10
+    div = []
+    for i in range(2, sum_):
+        if sum_%i == 0:
+            div.append(i)
+    for i in range (2, n):
+        if n%i==0 and not(i in div):
+            print('Делитель взаимно простой с суммой цифр: ' + str(i))
+            num1 = 1
+            break;
+    if num1 == 0:
+        print('Таких делителей нет')
+    return None
+print('Что сделать с числом?\n1-Найти кол-во взаимно простых\n2-Найти сумму цифр делящихся на 3\n3-Найти взаимно простой с суммой цифр делитель числа')
+m = int(input())
+if m == 1:
+    co_prime(number)
+elif m == 2:
+    num_divided_by_3(number)
+elif m == 3:
+    divided_and_co_prime(number)
+else: print("Выберите 1-3")
